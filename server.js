@@ -5,7 +5,7 @@ const MongoClient = require('mongodb').MongoClient
     // this is used to connect to MongoDB
 const app = express()
 
-require('./dotenv')
+// require('./dotenv')
 
 // Replace process.env.DB_URL with your actual connection string
 const connectionString = 'mongodb+srv://starwars:Starwars1@cluster0.sf7uo8q.mongodb.net/?retryWrites=true&w=majority'
@@ -121,10 +121,10 @@ MongoClient.connect('mongodb+srv://starwars:Starwars1@cluster0.sf7uo8q.mongodb.n
     // ========================
     // Listen
     // ========================
-        const isProduction = process.env.NODE_ENV === 'production'
-        const port = isProduction ? 7500 : 3000
-        app.listen(port, function () {
-        console.log(`listening on ${port}`)
+        // const isProduction = process.env.NODE_ENV === 'production'
+        // const port = isProduction ? 7500 : 3000
+        app.listen(5500, function () {
+        console.log(`listening on ${5500}`)
             // Here we create a server that browsers can connect to using Express' listen method.
         })
         

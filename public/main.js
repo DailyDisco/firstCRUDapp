@@ -7,28 +7,27 @@ const messageDiv = document.querySelector('#message')
 update.addEventListener('click', _ => {
   
     // Send PUT Request here
-  // the easiest way to send a PUT request is to use the Fetch API
-  fetch('/quotes', {
+    // the easiest way to send a PUT request is to use the Fetch API
+    fetch('/quotes', {
 
-      method: 'put',
-        // this sends the PUT request
+        method: 'put',
+          // this sends the PUT request
 
-       headers: { 'Content-Type': 'application/json' },
-        // this tells the sever we are sending JSON data
+        headers: { 'Content-Type': 'application/json' },
+          // this tells the sever we are sending JSON data
 
-        body: JSON.stringify({
-            name: 'Darth Vader',
-            quote: 'I find your lack of faith disturbing.'
-                // this converts the data into JSON
-        })
-  })
-  .then(res => {
-    if (res.ok) return res.json()
-  })
-  .then(response => {
-    window.location.reload(true)
-  })
-
+          body: JSON.stringify({
+              name: 'Darth Vader',
+              quote: 'I find your lack of faith disturbing.'
+                  // this converts the data into JSON
+          })
+    })
+    .then(res => {
+      if (res.ok) return res.json()
+    })
+    .then(response => {
+      window.location.reload(true)
+    })
 })
 
 
