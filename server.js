@@ -1,8 +1,5 @@
-// server.js
-// console.log('May Node be with you');
-
-// We use Express in Node.js by requiring it.
 const express = require('express')
+// We use Express in Node.js by requiring it.
 const bodyParser = require('body-parser')
 const MongoClient = require('mongodb').MongoClient
     // this is used to connect to MongoDB
@@ -59,7 +56,7 @@ MongoClient.connect('mongodb+srv://starwars:Starwars1@cluster0.sf7uo8q.mongodb.n
                     // this renders the index.ejs file.
                     // the { quotes: results } passes quotes to the render method.
                 })
-                .catch(error => console.error(error))
+                .catch(/* ... */)
          })
 
 
@@ -101,16 +98,16 @@ MongoClient.connect('mongodb+srv://starwars:Starwars1@cluster0.sf7uo8q.mongodb.n
             // Handle delete event here
             quotesCollection.deleteOne(
                 // this works similar to .findOneAndUpdate()
-                { name: req.body.name },
+                { name: req.body.name }
                     // here we don't need to hardcode 'Darth Vader' because we already named it in Fetch()
                 
                 // options; we don't need options here
-            )
+                )
             .then(result => {
                 if (result.deletedCount === 0) {
                     return res.json('No quote to delete')
                 }
-                res.json(`Deleted Darth Vader's quote.`)
+                res.json('Deleted Darth Vader\'s quote.')
             })
             .catch(error => console.error(error))
         })
@@ -119,13 +116,15 @@ MongoClient.connect('mongodb+srv://starwars:Starwars1@cluster0.sf7uo8q.mongodb.n
     // ========================
     // Listen
     // ========================
-        app.listen(3000, function () {
-        console.log('listening on 3000')
+        const isProduction = process.env.NODE_ENV === 'production'
+        const port = isProduction ? 7500 : 3000
+        app.listen(port, function () {
+        console.log(`listening on ${port}`)
             // Here we create a server that browsers can connect to using Express' listen method.
         })
         
     })
-    .catch(error => console.error(error))
+    .catch(console.error)
 
 
 
