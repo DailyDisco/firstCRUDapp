@@ -5,6 +5,11 @@ const MongoClient = require('mongodb').MongoClient
     // this is used to connect to MongoDB
 const app = express()
 
+require('./dotenv')
+
+// Replace process.env.DB_URL with your actual connection string
+const connectionString = 'mongodb+srv://starwars:Starwars1@cluster0.sf7uo8q.mongodb.net/?retryWrites=true&w=majority'
+
 MongoClient.connect('mongodb+srv://starwars:Starwars1@cluster0.sf7uo8q.mongodb.net/?retryWrites=true&w=majority',
 { useUnifiedTopology: true })
     // this gets rid of the depreciation warning
