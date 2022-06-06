@@ -7,7 +7,7 @@ update.addEventListener('click', _ => {
   // the easiest way to send a PUT request is to use the Fetch API
   fetch('/quotes', {
 
-      method: 'put'
+      method: 'put',
         // this sends the PUT request
 
        headers: { 'Content-Type': 'application/json' },
@@ -19,4 +19,11 @@ update.addEventListener('click', _ => {
                 // this converts the data into JSON
         })
   })
+  .then(res => {
+    if (res.ok) return res.json()
+  })
+  .then(response => {
+    window.location.reload(true)
+  })
+
 })

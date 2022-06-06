@@ -75,9 +75,32 @@ MongoClient.connect('mongodb+srv://starwars:Starwars1@cluster0.sf7uo8q.mongodb.n
         
         // This PUT method handles the PUT request
         app.put('/quotes', (req, res) => {
-            console.log(req.body)
+
+            // .findOneAndUpdate() syntax is
+                // .findOneAndUpdate(query, update, options)
+            quotesCollection.findOneAndUpdate(
+                // this .findOneAndUpdate() method allows us to find and change one item in the database
+                { name: 'Yoda' },
+                    // here we are finding any quote with the name: value of 'Yoda'
+            {
+                $set: {
+                    name: req.body.name,
+                    quote: req.body.quote
+                }
+            },
+            {
+                upsert: true
+                    // upsert means that if no documents can be update we can insert one ourselves
+            }
+          )
+            .then(result => res.json('Success'))
+            .catch(error => console.error(error))
         })
 
+
+    // ========================
+    // Listen
+    // ========================
         app.listen(3000, function () {
         console.log('listening on 3000')
             // Here we create a server that browsers can connect to using Express' listen method.
