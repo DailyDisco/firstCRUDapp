@@ -97,6 +97,11 @@ MongoClient.connect('mongodb+srv://starwars:Starwars1@cluster0.sf7uo8q.mongodb.n
             .catch(error => console.error(error))
         })
 
+        .app.delete('/quotes', (req, res) => {
+            // Handle delete event here
+            
+        })
+
 
     // ========================
     // Listen
