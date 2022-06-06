@@ -53,13 +53,12 @@ MongoClient.connect('mongodb+srv://starwars:Starwars1@cluster0.sf7uo8q.mongodb.n
             db.collection('quotes').find().toArray()
                 // here we create a cursor object that contains all our quotes
                     // we use .toArray() to move all the quotes into an array.
-                .then(results => {
-                    console.log(results)
+                .then(quotes => {
+                    res.render('index.ejs', { quotes: quotes })
+                    // this renders the index.ejs file.
+                    // the { quotes: results } passes quotes to the render method.
                 })
                 .catch(error => console.error(error))
-
-                res.render('index.ejs', {})
-                    // this renders the index.ejs file.
          })
 
 
