@@ -1,5 +1,6 @@
 const update = document.querySelector('#update-button')
 const deleteButton = document.querySelector('#delete-button')
+const messageDiv = document.querySelector('#message')
 
     // this adds a click event so that we can
         // send the data when the button is clicked.
@@ -44,7 +45,12 @@ deleteButton.addEventListener('click', _ => {
     .then(res => {
         if (res.ok) return res.json()
     })
-    .then(data => {
-        window.location.reload()
+    .then(response => {
+        if (response === 'No quote to delete') {
+            messageDiv.textContent = 'No Darth Vader quote to delete'
+        } else {
+        window.location.reload(true)
+        }
     })
+    .catch(console.error)
 })

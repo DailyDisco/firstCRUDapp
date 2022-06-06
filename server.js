@@ -97,9 +97,22 @@ MongoClient.connect('mongodb+srv://starwars:Starwars1@cluster0.sf7uo8q.mongodb.n
             .catch(error => console.error(error))
         })
 
-        .app.delete('/quotes', (req, res) => {
+        app.delete('/quotes', (req, res) => {
             // Handle delete event here
-            
+            quotesCollection.deleteOne(
+                // this works similar to .findOneAndUpdate()
+                { name: req.body.name },
+                    // here we don't need to hardcode 'Darth Vader' because we already named it in Fetch()
+                
+                // options; we don't need options here
+            )
+            .then(result => {
+                if (result.deletedCount === 0) {
+                    return res.json('No quote to delete')
+                }
+                res.json(`Deleted Darth Vader's quote.`)
+            })
+            .catch(error => console.error(error))
         })
 
 
