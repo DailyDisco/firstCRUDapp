@@ -29,6 +29,7 @@ MongoClient.connect('mongodb+srv://starwars:Starwars1@cluster0.sf7uo8q.mongodb.n
        app.use(bodyParser.urlencoded({ extended: true }))
             // Make sure to place body-parser before your CRUD handlers!
        app.use(bodyParser.json())
+        // this teaches the server to accept JSON data
        app.use(express.static('public'))
 
     // ========================
@@ -71,6 +72,11 @@ MongoClient.connect('mongodb+srv://starwars:Starwars1@cluster0.sf7uo8q.mongodb.n
                 })
                 .catch(error => console.error(error))
             })
+        
+        // This PUT method handles the PUT request
+        app.put('/quotes', (req, res) => {
+            console.log(req.body)
+        })
 
         app.listen(3000, function () {
         console.log('listening on 3000')

@@ -16,7 +16,7 @@ update.addEventListener('click', _ => {
         body: JSON.stringify({
             name: 'Darth Vader',
             quote: 'I find your lack of faith disturbing.'
-            
+                // this converts the data into JSON
         })
   })
 })
