@@ -1,3 +1,5 @@
+/*
+
 const fs = require('fs')
 const dotenv = require('dotenv')
 
@@ -8,6 +10,8 @@ const dotenv = require('dotenv')
  * @see https://www.npmjs.com/package/dotenv
  * @param {String} pathToConfig
  */
+
+/*
 function updateEnv (pathToConfig) {
   const envConfig = dotenv.parse(fs.readFileSync(pathToConfig))
   for (const k in envConfig) {
@@ -17,3 +21,5 @@ function updateEnv (pathToConfig) {
 
 // Update Environment variables
 updateEnv('./secrets/variables.env')
+
+*/
